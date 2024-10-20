@@ -3,32 +3,51 @@ def send_email(message, recipient, *, sender='urban.info@gmail.com'):
     #print(message) # задание для выполняемого кода (тесты):
 
     if recipient == sender:
-        message = 'Нельзя отправить письмо самому себе!'
+        message = 'Нельзя отправить письмо самому себе! '
         return message
+    if "@" not in sender:
+        #print('Нет собаки')
+        message = 'Невозможно отправить письмо с адреса '
+        return message + sender + 'на адрес' + recipient
+    if "@" not in recipient:
+        #print('Нет собаки')
+        message = 'Невозможно отправить письмо на адрес '
+        return message + sender + 'на адрес' + recipient
 
 
-    for i in ('.com', '.net', '.ru', '@'):
+    for i in ('.com', '.net', '.ru'):
 
-        if i in sender:
+        if i in sender[-len(i):]:
             if i == '.com':
                 break
         else:
-            message = 'Невозможно отправить письмо с адреса'
-            return message, sender, 'на адрес', recipient
+            message = 'Невозможно отправить письмо с адреса '
+            return message + sender + ' на адрес ' + recipient
 
+    flag = 0  # 1 - нет совпадений
+    for j in ('.com', '.ru', '.net'):
 
-    for j in ('.com', '.net', '.ru', '@'):
-        if j in recipient:
+        if j not in recipient[-len(j):]:
+            flag = 1
+        else:
+            flag = 0
+            break
+
+    if flag == 0:
+        if j in recipient[-len(j):]:
             if j == '.com':
                 message ='Письмо успешно отправлено с адреса '
-                return message, sender, 'на адрес ', recipient
+                return message + sender  + ' на адрес ' + recipient
             else:
-                message = 'НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса'
-                return message, sender, 'на адрес', recipient
+                message = 'НЕСТАНДАРТНЫЙ ПОЛУЧАТЕЛЬ! Письмо отправлено с адреса '
+                return message + sender + ' на адрес '+ recipient
+                    #return message
 
+    if flag == 1:
+        message = 'Невозможно 111 11 отправить письмо c адреса '
+        return message + sender + ' на адрес ' + recipient
 
-
-print(send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com', ))
+print(send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com' ))
 
 print(send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com'))
 
