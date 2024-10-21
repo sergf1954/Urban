@@ -1,6 +1,5 @@
-def send_email(message, recipient, *, sender='urban.info@gmail.com'):
-
-    #print(message) # задание для выполняемого кода (тесты):
+def send_email(message, recipient, *, sender='university.help@gmail.com'):
+    sender_default = 'university.help@gmail.com'
 
     if recipient == sender:
         message = 'Нельзя отправить письмо самому себе! '
@@ -18,8 +17,11 @@ def send_email(message, recipient, *, sender='urban.info@gmail.com'):
     for i in ('.com', '.net', '.ru'):
 
         if i in sender[-len(i):]:
-            if i == '.com':
+            if i == '.com' and sender == sender_default:
                 break
+            else:
+                message = 'НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса '
+                return message + sender + ' на адрес ' + recipient
         else:
             message = 'Невозможно отправить письмо с адреса '
             return message + sender + ' на адрес ' + recipient
@@ -54,6 +56,8 @@ print(send_email('Вы видите это сообщение как лучши�
 print(send_email('Пожалуйста, исправьте задание','urban.student@mail.ru', sender='urban.teacher@mail.uk'))
 
 print(send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru'))
+
+print(send_email('Пожалуйста, исправьте задание','urban.student@mail.ru'))
 
 
 
