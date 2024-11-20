@@ -8,15 +8,15 @@ class WordsFinder:
         all_words = dict()        #Словарь
         for i in self.file_names:
             with open(i, encoding='utf-8')  as file:
-                str_new = (file.read().translate(str.maketrans(",.=!?;:-", "        "))).split()
-                all_words[i] = str_new
-
+                # str_new = (file.read().translate(str.maketrans(",.=!?;:-", "        "))).split()
+                # all_words[i] = str_new
+                all_words[i] = (file.read().translate(str.maketrans(",.=!?;:-", "        "))).split()
         return all_words
 
     def find_count(self, word):
 
         count = []
-        for name, words in WordsFinder.get_all_words(self).items():
+        for name, words in self.get_all_words().items():
             file_name = name
             j = 0  # сколько нашли
             for i in enumerate(words):
@@ -28,19 +28,19 @@ class WordsFinder:
             else:
                 return file_name,count
     def count(self, word):
-        if WordsFinder.find_count(self, word):
+        if self.find_count(word):
             dictionary = dict()
-            dictionary[WordsFinder.find_count(self, word)[0]]\
-                = len(WordsFinder.find_count(self, word)[1])
+            dictionary[self.find_count(word)[0]]\
+                = len(self.find_count(word)[1])
             return dictionary
         else:
             return (' Нет такого слова')
 
     def find(self,word):
-        if WordsFinder.find_count(self,word):
+        if self.find_count(word):
             dictionary = dict()
-            dictionary[WordsFinder.find_count(self, word)[0]] \
-                = WordsFinder.find_count(self, word)[1][0]
+            dictionary[self.find_count(word)[0]]\
+                =self.find_count(word)[1][0]
             return dictionary
         else:
             return (' Нет такого слова')
