@@ -20,12 +20,12 @@ def calculate_average(numbers):
     try:
         for i in range(len(numbers)):
             col_poz += 1
+        summ = (personal_sum(numbers))
+        summ = summ / (col_poz - incorrect_data)
     except TypeError as esc:
         print(f'В numbers записан некорректный тип данных')
         return None
-    try:
-        summ = (personal_sum(numbers))
-        summ = summ / (col_poz - incorrect_data)
+
     except ZeroDivisionError as ex:
         #print(f'Деление на ноль - {ex}')
         return 0
