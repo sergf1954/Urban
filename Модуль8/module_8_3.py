@@ -11,12 +11,12 @@ class IncorrectCarNumbers(Exception):
 
 
 class Car:
-    def __init__(self, model:str, __vin:int, __numbers:str):
+    def __init__(self, model:str, vin:int, numbers:str):
         self.model   = model
-        if self.__is_valid_vin(__vin):
-            self.__vin = __vin
-        if self.__is_valid_numbers(__numbers):
-            self.__numbers = __numbers
+        if self.__is_valid_vin(vin):
+            self.__vin = vin
+        if self.__is_valid_numbers(numbers):
+            self.__numbers = numbers
 
 
     def __is_valid_vin(self,vin_number):
