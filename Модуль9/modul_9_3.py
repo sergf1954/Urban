@@ -4,7 +4,7 @@ second = ['Строка', 'Урбан', 'Компьютер']
 first_result = (len(x)-len(y) for x,y in zip(first, second) if len(x) - len(y))
 #
 second_result = ((bool(len(first[i]) == len(second[i])))
-          if (len(first[i]) == len(second[i])) else (len(first[i]) == len(second[i]))
+          if (len(first[i]) != len(second[i])) else True
           for i in range(len(first)))
 
 
