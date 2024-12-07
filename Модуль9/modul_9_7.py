@@ -2,10 +2,13 @@
 # Задание: Декораторы в Python
 
 def isprime(n):
-    d = 2
-    while n % d != 0:
-        d += 1
-    return d == n
+
+    # простые числа заканчиваются всегда на 1,3,7,9
+    if (((str(n))[-1]) == '1' or ((str(n))[-1]) == '3'
+            or ((str(n))[-1]) == '7' or ((str(n))[-1]) == '9'):
+        return True
+    else:
+        return False
 
 def is_prime(func):
     def wrapper(*numbers):
@@ -23,6 +26,26 @@ def sum_three(*numbers):
     return sum(numbers)
 #sum_three = is_prime(sum_three)
 
-result = sum_three(2,3,6,10,2)
+result = sum_three(2,3,6)
 print(result)
+
+
+
+
+
+
+
+
+
+#   d = 2
+#   while n % d != 0:
+#      d += 1
+#   return d == n
+#
+
+
+#  d = 2
+#  while d * d <= n and n % d != 0:
+#      d += 1
+#  return d * d > n
 
