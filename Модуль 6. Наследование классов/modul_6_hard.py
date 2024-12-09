@@ -129,7 +129,7 @@ class Triangle(Figure):
         return math.sqrt(p * (p - a) * (p - b)* (p - c))
 
 
-circle = Circle((200,200,200),12)
+circle = Circle((200,200,200),10)
 cube1 = Cube((222,35,130),6)
 
 circle.set_color(55,66,77)
@@ -141,7 +141,7 @@ print(cube1.get_color())
 cube1.set_sides(5, 3, 12, 4, 5)
 print(cube1.get_sides())
 
-circle.set_sides(12)
+circle.set_sides(15)
 print(circle.get_sides())
 
 print(len(circle))
